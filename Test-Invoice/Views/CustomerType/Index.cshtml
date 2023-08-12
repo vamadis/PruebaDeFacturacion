@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Mantenimineto de tipo de cliente</h1>
+
+<div class="row">
+
+    <div class="col-md-12 pb-3 pt-3" >
+        <form class="row g-3">
+            <div class="col-md-4">
+                <label for="txtDescripcion" class="form-label">Tipo de cliente</label>
+                <input type="text" class="form-control" id="txtDescripcion" placeholder="Digite un tipo de cliente">
+            </div>
+            <div class="col-auto" style="padding-top:31px">
+                <button type="button" onclick="save()" class="btn btn-primary mb-3">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyHtmlTable">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/js/customertype.js"></script>

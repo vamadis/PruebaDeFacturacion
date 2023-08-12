@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Mantenimineto de clientes</h1>
+
+<div class="row">
+
+    <div class="col-md-12 pb-3 pt-3">
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="txtNombreCliente" class="form-label">Nombre del cliente</label>
+                <input type="text" class="form-control" id="txtNombreCliente" placeholder="Digite un nombre">
+            </div>
+            <div class="col-md-6">
+                <label for="txtDireccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="txtDireccion" placeholder="Digite una dirección">
+            </div>
+            <div class="col-md-6">
+                <label for="slTipoCliente" class="form-label">Tipo de cliente</label>
+                <select class="form-select" id="slTipoCliente" aria-label="Default select example">
+                    <option selected>Seleccione un tipo de cliente</option>
+                </select>
+            </div>
+            <div class="col-md-2" style="padding-top:36px;">
+                <div class="form-check" style="padding-left:80px;">
+                    <input class="form-check-input" type="checkbox" value="true" id="CheckEstado">
+                    <label class="form-check-label" for="CheckEstado">
+                        Estado
+                    </label>
+                </div>
+            </div>
+            <div class="col-auto" style="padding-top:31px">
+                <button type="button" onclick="save()" class="btn btn-primary mb-3">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dirreción</th>
+                    <th scope="col">Tipo cliente</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyHtmlTable">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/js/customer.js"></script>

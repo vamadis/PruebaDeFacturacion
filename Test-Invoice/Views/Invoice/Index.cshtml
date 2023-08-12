@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    a {
+        color: #5D6975;
+        text-decoration: underline;
+    }
+
+    #project {
+        float: left;
+    }
+
+        #project span {
+            color: #5D6975;
+            text-align: right;
+            width: 52px;
+            margin-right: 10px;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+
+    #company {
+        float: right;
+        text-align: right;
+    }
+
+        #project div,
+        #company div {
+            white-space: nowrap;
+        }
+
+    #notices .notice {
+        color: #5D6975;
+        font-size: 1.2em;
+    }
+
+    footer {
+        color: #5D6975;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #C1CED9;
+        padding: 8px 0;
+        text-align: center;
+    }
+</style>
+
+
+<h1>Facturación</h1>
+
+<div class="row">
+
+    <div class="col-md-12 pb-3 pt-3">
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="slCliente" class="form-label">Cliente</label>
+                <select class="form-select" id="slCliente" aria-label="Default select example">
+                    <option selected>Seleccione un cliente</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="txtCantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="txtCantidad"  placeholder="0">
+            </div>
+            <div class="col-md-3">
+                <label for="txtPrecio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="txtPrecio"  placeholder="0.00">
+            </div>
+            <div class="col-auto" style="padding-top:31px">
+                <button type="button" onclick="AgregaConcepto()" class="btn btn-primary mb-3">Agregar</button>
+            </div>
+
+            <div class="col-md-12" id="facturaDetalle">
+                <table class="table" id="tablaDetalleFactura">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyHtmlTable">
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="txtItebis" class="form-label">Itebis</label>
+                    <input type="number" class="form-control" id="txtItebis" readonly>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtSubTotal" class="form-label">SubTotal</label>
+                    <input type="number" class="form-control" id="txtSubTotal" readonly>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtTotal" class="form-label">Total</label>
+                    <input type="number" class="form-control" id="txtTotal" readonly>
+                </div>
+                <div class="col-auto" style="padding-top:31px">
+                    <button type="button" onclick="postSaveInvoice()" class="btn btn-primary mb-3">Terminar</button>
+                </div>
+            </div>
+          
+        </form>
+    </div>
+
+    <div id="exampleModal" class="modal">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <header class="clearfix">
+                        <h1>FACTURA</h1>
+                        <div id="project">
+                            <div class="col-md-12">  <label for="txtItebis" class="form-label"><b>CLIENTE:</b> <span id="nombreCliente" style="font-size: 18px;"> </span></label> </div>
+                        </div>
+                    </header>
+                    <main>
+                        <table class="table" id="tablaDetalleFactura">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody id="facturatbodyHtmlTable">
+                            </tbody>
+                        </table>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="txtItebis" class="form-label" style="font-size: 14px;"><b>Itebis:</b> <span id="lbItebis"> </span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="txtSubTotal" class="form-label" style="font-size: 14px;"><b>SubTotal:</b>  <span id="lbSubTotal"> </span></label>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="txtTotal" class="form-label" style="font-size: 14px;"><b>Total:</b><span id="lbTotal"> </span></label>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Imprimir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/invoice.js"></script>
